@@ -708,10 +708,12 @@ flowoplib_hog(threadflow_t *threadflow, flowop_t *flowop)
 static int
 flowoplib_delay(threadflow_t *threadflow, flowop_t *flowop)
 {
+	struct timespec t, rt;
 	int value = avd_get_int(flowop->fo_value);
-
+	t.tv_sec = (value / 1000000000);
+	t.tv_nsec = (value % 1000000000);
 	flowop_beginop(threadflow, flowop);
-	(void) sleep(value);
+	(void) nanosleep(&t, &rt);
 	flowop_endop(threadflow, flowop, 0);
 	return (FILEBENCH_OK);
 }
