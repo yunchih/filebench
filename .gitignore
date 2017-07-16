@@ -28,7 +28,7 @@ threadflow.o
 utils.o
 vars.o
 aslr.o
-cvars/*.o
+cvars/**/*.o
 cvars/*.lo
 cvars/*.la
 
@@ -39,3 +39,8 @@ parser_gram.h
 parser_lex.c
 
 tags
+
+*.swp
+
+config.*
+configure
